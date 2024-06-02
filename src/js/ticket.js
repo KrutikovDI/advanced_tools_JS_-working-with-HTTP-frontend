@@ -39,6 +39,7 @@ export default class Ticket {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) return;
+          console.log(xhr.readyState);
           const notes = JSON.parse(xhr.responseText);
           const conteiner = document.querySelector(".conteiner");
           conteiner.innerHTML = "";
@@ -50,7 +51,7 @@ export default class Ticket {
             );
           }
         };
-        xhr.open("POST", "http://localhost:7070");
+        xhr.open("POST", "http://localhost:9090");
         xhr.send(formData);
         document.querySelector(".ticket-form").remove();
       });
@@ -92,7 +93,7 @@ export default class Ticket {
             );
           }
         };
-        xhr.open("PUT", "http://localhost:7070");
+        xhr.open("PUT", "http://localhost:9090");
         xhr.setRequestHeader(
           "Content-type",
           "application/x-www-form-urlencoded"
@@ -155,7 +156,7 @@ export default class Ticket {
             );
           }
         };
-        xhr.open("DELETE", "http://localhost:7070/?" + body);
+        xhr.open("DELETE", "http://localhost:9090/?" + body);
         xhr.setRequestHeader(
           "Content-type",
           "application/x-www-form-urlencoded"
